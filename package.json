@@ -19,7 +19,7 @@
     "type": "git",
     "url": "https://github.com/BiliksuunSamuel/kafka-producer-host"
   },
-  "description": "A NestJS module for seamless Kafka message production, providing an easy-to-use Kafka producer with built-in retry logic, dynamic configuration, and full support for NestJS dependency injection.",
+  "description": "A NestJS Kafka producer module with simple message sending and built-in retry logic.",
   "dependencies": {
     "@nestjs/microservices": "^10 || ^11.1.0",
     "kafkajs": "^2.2.4",

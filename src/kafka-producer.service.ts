@@ -1,10 +1,16 @@
-import { Inject, Injectable, Logger, OnModuleInit } from "@nestjs/common";
+import {
+  Inject,
+  Injectable,
+  Logger,
+  OnApplicationBootstrap,
+  OnModuleInit,
+} from "@nestjs/common";
 import { Kafka, Producer } from "kafkajs";
 import { KAFKA_PRODUCER_OPTIONS } from "./constants/kafka.constants";
 import { KafkaProducerConfig } from "./interface/kafka-producer-config.interface";
 
 @Injectable()
-export class KafkaProducerService implements OnModuleInit {
+export class KafkaProducerService implements OnApplicationBootstrap {
   private readonly logger = new Logger(KafkaProducerService.name);
   private producer: Producer;
   private retries: number;
@@ -28,7 +34,7 @@ export class KafkaProducerService implements OnModuleInit {
     this.retryDelay = config.retryOptions?.retryDelay ?? 1000; // 1 second
   }
 
-  async onModuleInit() {
+  async onApplicationBootstrap() {
     await this.producer.connect();
     this.logger.log("✅ Kafka producer connected");
   }
@@ -40,7 +46,7 @@ export class KafkaProducerService implements OnModuleInit {
       key?: string;
       headers?: Record<string, string>;
       partition?: number;
-    }
+    } = {}
   ): Promise<void> {
     const { key, headers, partition } = options;
 
