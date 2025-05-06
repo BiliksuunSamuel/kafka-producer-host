@@ -1,0 +1,13 @@
+.env
+dist
+build
+out
+node_modules
+coverage
+.vscode
+*.log
+.idea
+*.sublime-project
+*.sublime-workspace
+*.sublime-settings
+*.sublime-metadata

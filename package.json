@@ -1,0 +1,21 @@
+{
+  "name": "kafka-producer-host",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@nestjs/microservices": "^11.1.0",
+    "kafkajs": "^2.2.4",
+    "@nestjs/common": "^10 || ^11"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.12",
+    "typescript": "^5.8.3"
+  }
+}
