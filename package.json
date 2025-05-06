@@ -1,16 +1,27 @@
 {
   "name": "kafka-producer-host",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "keywords": [
+    "nestjs",
+    "kafka",
+    "producer",
+    "microservices"
+  ],
+  "author": "Biliksuun",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BiliksuunSamuel/kafka-producer-host"
+  },
+  "description": "A NestJS module for seamless Kafka message production, providing an easy-to-use Kafka producer with built-in retry logic, dynamic configuration, and full support for NestJS dependency injection.",
   "dependencies": {
-    "@nestjs/microservices": "^11.1.0",
+    "@nestjs/microservices": "^10 || ^11.1.0",
     "kafkajs": "^2.2.4",
     "@nestjs/common": "^10 || ^11"
   },
