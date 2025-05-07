@@ -3,10 +3,15 @@ import { KafkaConfig, Mechanism, SASLOptions } from "kafkajs";
 export interface KafkaProducerConfig
   extends Omit<
     KafkaConfig,
-    "ssl" | "sasl" | "brokers" | "clientId" | "offsetReset" | "retryOptions"
+    | "ssl"
+    | "sasl"
+    | "brokers"
+    | "clientId"
+    | "offsetReset"
+    | "retryOptions"
+    | "groupId"
   > {
   bootstrapServer: string | string[];
-  groupId: string;
   clientId?: string;
   retryOptions?: {
     retries: number;
