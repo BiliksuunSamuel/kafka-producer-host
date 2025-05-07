@@ -3,7 +3,6 @@ import {
   Injectable,
   Logger,
   OnApplicationBootstrap,
-  OnModuleInit,
 } from "@nestjs/common";
 import { Kafka, Producer } from "kafkajs";
 import { KAFKA_PRODUCER_OPTIONS } from "./constants/kafka.constants";
@@ -20,11 +19,15 @@ export class KafkaProducerService implements OnApplicationBootstrap {
     @Inject(KAFKA_PRODUCER_OPTIONS)
     private readonly config: KafkaProducerConfig
   ) {
+    const { bootstrapServer, clientId, ssl, sasl, ...others } = this.config;
     const kafka = new Kafka({
-      clientId: this.config.clientId,
-      brokers: Array.isArray(this.config.bootstrapServer)
-        ? this.config.bootstrapServer
-        : [this.config.bootstrapServer],
+      clientId,
+      brokers: Array.isArray(bootstrapServer)
+        ? bootstrapServer
+        : [bootstrapServer],
+      ssl,
+      sasl,
+      ...others,
     });
 
     this.producer = kafka.producer();
